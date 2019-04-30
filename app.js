@@ -1,5 +1,6 @@
 const express = require('express');
 const expressIp = require('express-ip');
+const cookies = require('browser-cookies');
 
 const MongoClient = require('mongodb').MongoClient;
 const mongoServerUrl = 'mongodb://localhost:27017';
@@ -12,7 +13,7 @@ const base64string = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42m
 
 app.use(expressIp().getIpInfoMiddleware)
 
-app.get('**', async (req, res) => {
+app.get('**', async (req, res) => {    
     await insert(req);
 
     res.write(
@@ -34,7 +35,8 @@ const insert = async req => {
         cookies: req.cookies,
         headers: req.headers,
         hostname: req.hostname,
-        ipInfo: req.ipInfo
+        ipInfo: req.ipInfo,
+        allCookies: cookies.all()
     }
 
     const con = await MongoClient.connect(mongoServerUrl, { useNewUrlParser: true });
@@ -43,5 +45,5 @@ const insert = async req => {
 }
 
 app.listen(PORT, function () {
-    console.log(`Server On ${PORT}`);
+    console.log(`Server On ${PORT}`);    
 });
