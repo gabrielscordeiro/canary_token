@@ -1,7 +1,5 @@
 const express = require('express');
 const expressIp = require('express-ip');
-const cookies = require('browser-cookies');
-
 const MongoClient = require('mongodb').MongoClient;
 const mongoServerUrl = 'mongodb://localhost:27017';
 const dbName = 'canary_token';
@@ -35,8 +33,7 @@ const insert = async req => {
         cookies: req.cookies,
         headers: req.headers,
         hostname: req.hostname,
-        ipInfo: req.ipInfo,
-        allCookies: cookies.all()
+        ipInfo: req.ipInfo
     }
 
     const con = await MongoClient.connect(mongoServerUrl, { useNewUrlParser: true });
