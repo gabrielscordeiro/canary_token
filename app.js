@@ -42,13 +42,6 @@ const insert = async req => {
     await con.db(dbName).collection('tokens').insertOne(dados);
 }
 
-
-
-
-
-
-
-
 app.listen(PORT, function () {
     console.log(`Server On ${PORT}`);
 });
