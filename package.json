@@ -1,0 +1,16 @@
+{
+  "name": "canarytoken",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Schmidt Cordeiro <gabrielscordeiro2012@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-ip": "^1.0.3",
+    "mongodb": "^3.2.3"
+  }
+}
